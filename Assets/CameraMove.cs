@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-	public float addSpeed = 0.1f;
 	float speed = 0.5f;  //ƒJƒƒ‰‚ÌˆÚ“®‘¬“x
 	public float radius = 0.5f; //‰~‚Ì‘å‚«‚³
 
@@ -12,6 +11,7 @@ public class CameraMove : MonoBehaviour
 	float _z;
 
 	public GameObject playerObj;
+	public PlayerMove playerMoveSqr;
 
 	// Start is called before the first frame update
 	void Start()
@@ -24,11 +24,11 @@ public class CameraMove : MonoBehaviour
     {
 		if (Input.GetKey(KeyCode.A))
 		{
-			speed += addSpeed;
+			speed += playerMoveSqr.addSpeed;
 		}
 		else if (Input.GetKey(KeyCode.D))
 		{
-			speed += -addSpeed;
+			speed += -playerMoveSqr.addSpeed;
 		}
 
 		_x = radius * Mathf.Sin(speed);

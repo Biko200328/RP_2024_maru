@@ -5,14 +5,13 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 	public float addSpeed = 0.1f;
-	float speed = 0.5f;  //ƒJƒƒ‰‚ÌˆÚ“®‘¬“x
+	float speed = 0.5f;
 	public float radius = 0.5f; //‰~‚Ì‘å‚«‚³
 
 	float _x;
 	float _z;
 
 	public GameObject lookObj;
-
 	public float jumpPower;
 
 	// Start is called before the first frame update
