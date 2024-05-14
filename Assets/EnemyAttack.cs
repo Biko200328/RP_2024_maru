@@ -29,6 +29,12 @@ public class EnemyAttack : MonoBehaviour
 	[SerializeField] int maxNum;
 	[SerializeField] GameObject insekiObj;
 
+	[SerializeField] bool tackle;
+	[SerializeField] float tackleTime;
+	[SerializeField] float breakTime;
+	[SerializeField] float tackleSpeed;
+
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -46,7 +52,11 @@ public class EnemyAttack : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		time += speed;
+		if (tackle == false)
+		{
+			time += speed;
+		}
+		
 
 		if (isMultiBullet)
 		{
@@ -91,6 +101,21 @@ public class EnemyAttack : MonoBehaviour
 					timer = 0;
 					nowNum = 0;
 				}
+			}
+		}
+
+		if(tackle)
+		{
+			timer++;
+
+			if(timer <= tackleTime)
+			{
+				time -= tackleSpeed;
+			}
+			else if (timer >= tackleTime + breakTime)
+			{
+				timer = 0;
+				tackle = false;
 			}
 		}
 	}

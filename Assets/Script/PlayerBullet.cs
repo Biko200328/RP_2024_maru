@@ -45,6 +45,8 @@ public class PlayerBullet : MonoBehaviour
 		time += speed;
 
 		deadTimer += Time.deltaTime;
+
+		transform.localScale += new Vector3(0.001f, 0.001f, 0.001f);
 	}
 
 	private void OnTriggerEnter(Collider other)
