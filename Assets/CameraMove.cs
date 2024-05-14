@@ -24,11 +24,11 @@ public class CameraMove : MonoBehaviour
     {
 		if (Input.GetKey(KeyCode.A))
 		{
-			speed += -addSpeed;
+			speed += addSpeed;
 		}
 		else if (Input.GetKey(KeyCode.D))
 		{
-			speed += addSpeed;
+			speed += -addSpeed;
 		}
 
 		_x = radius * Mathf.Sin(speed);
