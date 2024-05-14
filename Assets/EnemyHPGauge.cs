@@ -7,17 +7,22 @@ public class EnemyHPGauge : MonoBehaviour
 	public float maxHp;
 	public float nowHp;
 
+	public EnemyDamage enemyDamageSqr;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		nowHp = enemyDamageSqr.nowHp;
+		maxHp = enemyDamageSqr.maxHp;
+
 		var scale = gameObject.transform.localScale;
-		scale.z = nowHp / maxHp;
+		scale.x = nowHp / maxHp;
 		gameObject.transform.localScale = scale;
 	}
 }
