@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 28073692}
   - component: {fileID: 28073691}
   - component: {fileID: 28073695}
+  - component: {fileID: 28073696}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Enemy
@@ -232,12 +233,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamage: 0
-  totalTime: 0.06
+  totalTime: 0
   addSpeed: 0.1
   nowHp: 100
   maxHp: 100
   damageNum: 1
   playerMoveSqr: {fileID: 2059284528}
+--- !u!114 &28073696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28073690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6b1b385d1b27c43a1ee040988d2102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &259965172
 PrefabInstance:
   m_ObjectHideFlags: 0
