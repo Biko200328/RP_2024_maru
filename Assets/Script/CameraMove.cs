@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
 	float speed = 0.5f;  //ƒJƒƒ‰‚ÌˆÚ“®‘¬“x
+	float addSpeedCon;
 	public float radius = 0.5f; //‰~‚Ì‘å‚«‚³
 
 	float _x;
@@ -30,6 +31,12 @@ public class CameraMove : MonoBehaviour
 		{
 			speed += -playerMoveSqr.addSpeed;
 		}
+
+		var h = Input.GetAxis("cHorizontalL");
+
+		addSpeedCon = h * playerMoveSqr.addSpeed;
+
+		speed -= addSpeedCon;
 
 		_x = radius * Mathf.Sin(speed);
 		_z = radius * Mathf.Cos(speed);

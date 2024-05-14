@@ -818,6 +818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addSpeed: 0.02
+  addSpeedCon: 0
   radius: 12
   isFloor: 0
   isDoubleJump: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 	public float addSpeed = 0.1f;
+	public float addSpeedCon = 0;
 	float speed = 0.5f;
 	public float radius = 0.5f; //円の大きさ
 
@@ -38,6 +39,12 @@ public class PlayerMove : MonoBehaviour
 			speed += -addSpeed;
 		}
 
+		var h = Input.GetAxis("cHorizontalL");
+
+		addSpeedCon = h * addSpeed;
+
+		speed -= addSpeedCon;
+
 		_x = radius * Mathf.Sin(speed);
 		_z = radius * Mathf.Cos(speed);
 
@@ -47,7 +54,7 @@ public class PlayerMove : MonoBehaviour
 		{
 			var v = rb.velocity;
 			
-			if(Input.GetKeyDown(KeyCode.Space))
+			if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("buttonA"))
 			{
 				//地面についてる時はジャンプ可能
 				if(isFloor == true)
