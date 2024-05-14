@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-	public float addSpeed = 0.1f;
-	public float addSpeedCon = 0;
-	float speed = 0.5f;
+	public float speed = 1f;
+	public float addRotSpeed = 0.1f;
+	public float addRotSpeedCon = 0;
+	public float rotate = 0.5f;
 	public float radius = 0.5f; //円の大きさ
 
 	public bool isFloor;
@@ -15,6 +16,10 @@ public class PlayerMove : MonoBehaviour
 
 	float _x;
 	float _z;
+
+	float _nextX;
+	float _nextZ;
+	float _nextRotate;
 
 	public GameObject lookObj;
 	
@@ -32,46 +37,59 @@ public class PlayerMove : MonoBehaviour
 	{
 		if(Input.GetKey(KeyCode.A))
 		{
-			speed += addSpeed;
+			rotate += addRotSpeed;
+			//_nextRotate = rotate + addRotSpeed; 
 		}
 		else if (Input.GetKey(KeyCode.D))
 		{
-			speed += -addSpeed;
+			rotate -= addRotSpeed;
+			//_nextRotate = rotate - addRotSpeed;
 		}
 
-		var h = Input.GetAxis("cHorizontalL");
+		var inputH = Input.GetAxis("cHorizontalL");
+		addRotSpeedCon = inputH * addRotSpeed;
 
-		addSpeedCon = h * addSpeed;
+		rotate -= addRotSpeedCon;
 
-		speed -= addSpeedCon;
+		////現在
+		_x = radius * Mathf.Sin(rotate);
+		_z = radius * Mathf.Cos(rotate);
 
-		_x = radius * Mathf.Sin(speed);
-		_z = radius * Mathf.Cos(speed);
+		////次
+		//_nextX = radius * Mathf.Sin(_nextRotate);
+		//_nextZ = radius * Mathf.Cos(_nextRotate);
 
+		//float vecX = _nextX - _x;
+		//float vecZ = _nextZ - _z;
+
+		//Vector2 vec = new Vector2(vecX, vecZ);
+		//vec = vec.normalized;
+
+		var v = rb.velocity;
+
+		//座標移動
 		transform.position = new Vector3(_x, transform.position.y,_z);
 
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("buttonA"))
 		{
-			var v = rb.velocity;
-		
 			//地面についてる時はジャンプ可能
-			if(isFloor == true)
+			if (isFloor == true)
 			{
-				v.y = 0;
 				v.y += jumpPower;
 			}
 			//ついていないときでもダブルジャンプフラグが残ってる時はできる
 			else
 			{
-				if(isDoubleJump == true)
+				if (isDoubleJump == true)
 				{
 					v.y = 0;
 					v.y += jumpPower;
 					isDoubleJump = false;
 				}
 			}
-
-			rb.velocity = v;
 		}
+
+		rb.velocity = v;
+
 	}
 }

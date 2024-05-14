@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMove : MonoBehaviour
+public class WallCheck : MonoBehaviour
 {
 	float speed = 0.5f;  //ƒJƒƒ‰‚ÌˆÚ“®‘¬“x
 	float addSpeedCon;
-	public float radius = 0.5f; //‰~‚Ì‘å‚«‚³
 
 	float _x;
 	float _z;
@@ -38,10 +37,24 @@ public class CameraMove : MonoBehaviour
 
 		speed -= addSpeedCon;
 
-		_x = radius * Mathf.Sin(speed);
-		_z = radius * Mathf.Cos(speed);
+		_x = playerMoveSqr.radius * Mathf.Sin(speed + 0.02f);
+		_z = playerMoveSqr.radius * Mathf.Cos(speed + 0.02f);
 
 		transform.position = new Vector3(_x, transform.position.y, _z);
-		transform.LookAt(playerObj.gameObject.transform);
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		
 	}
 }
