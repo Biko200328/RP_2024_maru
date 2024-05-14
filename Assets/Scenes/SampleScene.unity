@@ -272,8 +272,9 @@ MonoBehaviour:
   maxNum: 10
   insekiObj: {fileID: 3290514002724570566, guid: ff7369ee8b3f9c64e9a8a8b0c2767cff, type: 3}
   tackle: 0
+  stopTime: 60
   tackleTime: 50
-  breakTime: 40
+  breakTime: 80
   tackleSpeed: 0.1
 --- !u!54 &28073697
 Rigidbody:

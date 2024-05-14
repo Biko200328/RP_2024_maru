@@ -35,6 +35,7 @@ public class EnemyAttack : MonoBehaviour
 
 	[Header("ìÀêi")]
 	[SerializeField] bool tackle;
+	[SerializeField] float stopTime;
 	[SerializeField] float tackleTime;
 	[SerializeField] float breakTime;
 	[SerializeField] float tackleSpeed;
@@ -130,12 +131,18 @@ public class EnemyAttack : MonoBehaviour
 		if(tackle)
 		{
 			timer++;
+			if(timer == stopTime - 35)
+			{
+				var v = rb.velocity;
 
-			if(timer <= tackleTime)
+				v.y += 5;
+				rb.velocity = v;
+			}
+			if (timer >= stopTime && timer <= stopTime + tackleTime)
 			{
 				time -= tackleSpeed;
 			}
-			else if (timer >= tackleTime + breakTime)
+			else if (timer >= stopTime + tackleTime + breakTime)
 			{
 				timer = 0;
 				tackle = false;
