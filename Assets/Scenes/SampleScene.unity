@@ -251,6 +251,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6b1b385d1b27c43a1ee040988d2102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.003
+  time: 0
+  playerMoveSqr: {fileID: 2059284528}
+  isMultiBullet: 0
+  bulletsTime:
+  - 5
+  - 60
+  - 120
+  bullets:
+  - {fileID: 8325586717151904230, guid: 0bf75197d27cada4ab75cc3b7add2e45, type: 3}
+  - {fileID: 8325586717151904230, guid: 0bf75197d27cada4ab75cc3b7add2e45, type: 3}
+  - {fileID: 654164117055151433, guid: 9f7d81e052e72a1489c6bf5d199447ee, type: 3}
+  laserbullet: {fileID: 8325586717151904230, guid: 0bf75197d27cada4ab75cc3b7add2e45, type: 3}
+  inseki: 0
+  insekiTime: 30
+  maxNum: 10
+  insekiObj: {fileID: 3290514002724570566, guid: ff7369ee8b3f9c64e9a8a8b0c2767cff, type: 3}
 --- !u!1001 &259965172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1489,7 +1506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8325586717151904231, guid: 21f343688c60b9a4da3baa143b875b5e, type: 3}
       propertyPath: speed
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8325586717151904231, guid: 21f343688c60b9a4da3baa143b875b5e, type: 3}
       propertyPath: playerMoveSqr

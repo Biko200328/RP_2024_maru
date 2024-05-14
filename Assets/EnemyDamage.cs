@@ -27,14 +27,14 @@ public class EnemyDamage : MonoBehaviour
 	// Start is called before the first frame update
 	void Update()
 	{
-		_x = playerMoveSqr.radius * Mathf.Sin(-time);
-		_z = playerMoveSqr.radius * Mathf.Cos(-time);
-
-		transform.position = new Vector3(_x, transform.position.y, _z);
-
 		if(isDamage == true)
 		{
-			if(timer >= totalTime)
+			//_x = playerMoveSqr.radius * Mathf.Sin(-time);
+			//_z = playerMoveSqr.radius * Mathf.Cos(-time);
+
+			//transform.position = new Vector3(_x, transform.position.y, _z);
+
+			if (timer >= totalTime)
 			{
 				isDamage = false;
 				timer = 0;
