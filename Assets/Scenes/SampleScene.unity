@@ -254,7 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.003
   time: 0
-  playerMoveSqr: {fileID: 2059284528}
+  attackTime: 180
+  attackTimer: 0
   isMultiBullet: 0
   bulletsTime:
   - 80

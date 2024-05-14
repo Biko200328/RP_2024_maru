@@ -11,8 +11,9 @@ public class EnemyAttack : MonoBehaviour
 	float _x;
 	float _z;
 
-	public PlayerMove playerMoveSqr;
-	Rigidbody rb;
+	[SerializeField] float attackTime;
+	[SerializeField] float attackTimer;
+	bool isAttack;
 
 
 	//’e
@@ -40,6 +41,9 @@ public class EnemyAttack : MonoBehaviour
 	[SerializeField] float breakTime;
 	[SerializeField] float tackleSpeed;
 
+	PlayerMove playerMoveSqr;
+	Rigidbody rb;
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -55,10 +59,40 @@ public class EnemyAttack : MonoBehaviour
 		_z = playerMoveSqr.radius * Mathf.Cos(-time);
 
 		transform.position = new Vector3(_x, transform.position.y, _z);
+
+		if(isAttack == true)
+		{
+			int a = 0;
+			a = Random.Range(0, 3);
+			if(a == 0)
+			{
+				isMultiBullet = true;
+			}
+			else if (a == 1)
+			{
+				inseki = true;
+			}
+			else
+			{
+				tackle = true;
+			}
+
+			isAttack = false;
+		}
 	}
 
 	private void FixedUpdate()
 	{
+		if(isAttack == false && isMultiBullet == false && inseki == false && tackle == false)
+		{
+			attackTimer++;
+			if(attackTimer >= attackTime)
+			{
+				isAttack = true;
+			}
+		}
+
+
 		if (tackle == false)
 		{
 			time += speed;
@@ -92,6 +126,8 @@ public class EnemyAttack : MonoBehaviour
 						Instantiate(bullets[i], new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
 						timer = 0;
 						isMultiBullet = false;
+						isAttack = false;
+						attackTimer = 0;
 					}
 
 					break;
@@ -121,6 +157,8 @@ public class EnemyAttack : MonoBehaviour
 					if (nowNum >= maxNum)
 					{
 						inseki = false;
+						isAttack = false;
+						attackTimer = 0;
 						timer = 0;
 						nowNum = 0;
 					}
@@ -146,6 +184,8 @@ public class EnemyAttack : MonoBehaviour
 			{
 				timer = 0;
 				tackle = false;
+				isAttack = false;
+				attackTimer = 0;
 			}
 		}
 	}
