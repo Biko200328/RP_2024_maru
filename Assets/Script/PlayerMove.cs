@@ -50,29 +50,25 @@ public class PlayerMove : MonoBehaviour
 
 		transform.position = new Vector3(_x, transform.position.y,_z);
 
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("buttonA"))
 		{
 			var v = rb.velocity;
-			
-			if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("buttonA"))
+		
+			//地面についてる時はジャンプ可能
+			if(isFloor == true)
 			{
-				//地面についてる時はジャンプ可能
-				if(isFloor == true)
+				v.y = 0;
+				v.y += jumpPower;
+			}
+			//ついていないときでもダブルジャンプフラグが残ってる時はできる
+			else
+			{
+				if(isDoubleJump == true)
 				{
 					v.y = 0;
 					v.y += jumpPower;
+					isDoubleJump = false;
 				}
-				//ついていないときでもダブルジャンプフラグが残ってる時はできる
-				else
-				{
-					if(isDoubleJump == true)
-					{
-						v.y = 0;
-						v.y += jumpPower;
-						isDoubleJump = false;
-					}
-				}
-				
 			}
 
 			rb.velocity = v;
