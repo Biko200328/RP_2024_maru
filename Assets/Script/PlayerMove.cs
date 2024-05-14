@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		lookLeft = true;
 	}
 
 	// Update is called once per frame
