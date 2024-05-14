@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-	float speed = 0.5f;  //ƒJƒƒ‰‚ÌˆÚ“®‘¬“x
-	float addSpeedCon;
-	public float radius = 0.5f; //‰~‚Ì‘å‚«‚³
+	float addRotSpeedCon;
+	float addRotSpeed = 0.02f;
+	public float rotate = 0.5f;
+	public float radius = 20.5f;
 
 	float _x;
 	float _z;
@@ -23,24 +24,29 @@ public class CameraMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKey(KeyCode.A))
+		var inputH = Input.GetAxis("cHorizontalL");
+		addRotSpeedCon = inputH * addRotSpeed;
+
+		if (addRotSpeedCon > 0)
 		{
-			speed += playerMoveSqr.addRotSpeed;
+			if (playerMoveSqr.isHitLeft == false)
+			{
+				rotate -= addRotSpeedCon;
+			}
 		}
-		else if (Input.GetKey(KeyCode.D))
+		if (addRotSpeedCon < 0)
 		{
-			speed += -playerMoveSqr.addRotSpeed;
+			if (playerMoveSqr.isHitRight == false)
+			{
+				rotate -= addRotSpeedCon;
+			}
 		}
 
-		var h = Input.GetAxis("cHorizontalL");
+		//Œ»Ý
+		_x = radius * Mathf.Sin(rotate);
+		_z = radius * Mathf.Cos(rotate);
 
-		addSpeedCon = h * playerMoveSqr.addRotSpeed;
-
-		speed -= addSpeedCon;
-
-		_x = radius * Mathf.Sin(speed);
-		_z = radius * Mathf.Cos(speed);
-
+		//À•WˆÚ“®
 		transform.position = new Vector3(_x, transform.position.y, _z);
 		transform.LookAt(playerObj.gameObject.transform);
 	}

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-	[SerializeField] float speed;
+	public float speed;
 	[SerializeField] float time;
 
 	public float radius = 0.5f; //‰~‚Ì‘å‚«‚³
@@ -13,6 +14,9 @@ public class PlayerBullet : MonoBehaviour
 	float _z;
 
 	public PlayerMove playerMoveSqr;
+
+	public float deadTime;
+	float deadTimer;
 
 	// Start is called before the first frame update
 	void Start()
@@ -29,10 +33,17 @@ public class PlayerBullet : MonoBehaviour
 		_z = playerMoveSqr.radius * Mathf.Cos(-time);
 
 		transform.position = new Vector3(_x, transform.position.y, _z);
+
+		if(deadTimer >= deadTime)
+		{
+			Destroy(this.gameObject);
+		}
 	}
 
 	private void FixedUpdate()
 	{
 		time += speed;
+
+		deadTimer += Time.deltaTime;
 	}
 }

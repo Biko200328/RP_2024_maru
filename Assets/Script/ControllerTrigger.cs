@@ -202,7 +202,9 @@ public class ControllerTrigger : MonoBehaviour
 
 	public bool GetRTDown()
 	{
-		if(tri <= -0.8f)
+		isPrevRT = isRT;
+
+		if (tri <= -0.8f)
 		{
 			isRT = true;
 		}
@@ -215,8 +217,6 @@ public class ControllerTrigger : MonoBehaviour
 		{
 			return true;
 		}
-
-		isPrevRT = isRT;
 
 		return false;
 	}

@@ -22,7 +22,11 @@ public class PlayerMove : MonoBehaviour
 	float _nextRotate;
 
 	public GameObject lookObj;
-	
+
+	public bool isHitLeft;
+	public bool isHitRight;
+
+	public bool lookLeft;
 
 	Rigidbody rb;
 
@@ -35,40 +39,45 @@ public class PlayerMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(Input.GetKey(KeyCode.A))
-		{
-			rotate += addRotSpeed;
-			//_nextRotate = rotate + addRotSpeed; 
-		}
-		else if (Input.GetKey(KeyCode.D))
-		{
-			rotate -= addRotSpeed;
-			//_nextRotate = rotate - addRotSpeed;
-		}
+		//if(Input.GetKey(KeyCode.A))
+		//{
+		//	rotate += addRotSpeed;
+		//	//_nextRotate = rotate + addRotSpeed; 
+		//}
+		//else if (Input.GetKey(KeyCode.D))
+		//{
+		//	rotate -= addRotSpeed;
+		//	//_nextRotate = rotate - addRotSpeed;
+		//}
 
 		var inputH = Input.GetAxis("cHorizontalL");
 		addRotSpeedCon = inputH * addRotSpeed;
 
-		rotate -= addRotSpeedCon;
+		if (addRotSpeedCon > 0)
+		{
+			lookLeft = true;
+			if (isHitLeft == false)
+			{
+				rotate -= addRotSpeedCon;
+			}
+		}
+		if (addRotSpeedCon < 0)
+		{
+			lookLeft = false;
+			if (isHitRight == false)
+			{
+				rotate -= addRotSpeedCon;
+			}
+		}
 
-		////現在
+		//現在
 		_x = radius * Mathf.Sin(rotate);
 		_z = radius * Mathf.Cos(rotate);
 
-		////次
-		//_nextX = radius * Mathf.Sin(_nextRotate);
-		//_nextZ = radius * Mathf.Cos(_nextRotate);
-
-		//float vecX = _nextX - _x;
-		//float vecZ = _nextZ - _z;
-
-		//Vector2 vec = new Vector2(vecX, vecZ);
-		//vec = vec.normalized;
+		//座標移動
+		transform.position = new Vector3(_x, transform.position.y, _z);
 
 		var v = rb.velocity;
-
-		//座標移動
-		transform.position = new Vector3(_x, transform.position.y,_z);
 
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("buttonA"))
 		{
@@ -76,6 +85,7 @@ public class PlayerMove : MonoBehaviour
 			if (isFloor == true)
 			{
 				v.y += jumpPower;
+				isFloor = false;
 			}
 			//ついていないときでもダブルジャンプフラグが残ってる時はできる
 			else

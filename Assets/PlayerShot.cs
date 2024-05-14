@@ -8,10 +8,14 @@ public class PlayerShot : MonoBehaviour
 
 	[SerializeField] GameObject bulletObj;
 
+	PlayerMove playerMove;
+
+	public float bulletSpeed;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		playerMove = GetComponent<PlayerMove>();
 	}
 
 	// Update is called once per frame
@@ -19,7 +23,15 @@ public class PlayerShot : MonoBehaviour
 	{
 		if(controllerTriggerSqr.GetRTDown())
 		{
-			Instantiate(bulletObj, transform.position, Quaternion.identity);
+			PlayerBullet pb = Instantiate(bulletObj, transform.position, Quaternion.identity).GetComponent<PlayerBullet>();
+			if (playerMove.lookLeft)
+			{
+				pb.speed = bulletSpeed;
+			}
+			else
+			{
+				pb.speed = -bulletSpeed;
+			}
 		}
 	}
 }

@@ -112,3 +112,4 @@ MonoBehaviour:
   time: 0
   radius: 0.5
   playerMoveSqr: {fileID: 0}
+  deadTime: 3
