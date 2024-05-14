@@ -12,22 +12,28 @@ public class EnemyAttack : MonoBehaviour
 	float _z;
 
 	public PlayerMove playerMoveSqr;
+	Rigidbody rb;
 
 
 	//íe
+	[Header("íe")]
 	[SerializeField] bool isMultiBullet;
 	float timer = 0;
 	[SerializeField] float[] bulletsTime;
 	[SerializeField] GameObject[] bullets;
 	[SerializeField] GameObject particle;
 
-
+	//Ë¶êŒ
+	[Header("Ë¶êŒ")]
 	[SerializeField] bool inseki;
 	[SerializeField] float insekiTime;
+	[SerializeField] float jumpPower;
+	[SerializeField] float afterJumpTime;
 	int nowNum;
 	[SerializeField] int maxNum;
 	[SerializeField] GameObject insekiObj;
 
+	[Header("ìÀêi")]
 	[SerializeField] bool tackle;
 	[SerializeField] float tackleTime;
 	[SerializeField] float breakTime;
@@ -37,6 +43,7 @@ public class EnemyAttack : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		rb = GetComponent<Rigidbody>();
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
 	}
 
@@ -95,16 +102,27 @@ public class EnemyAttack : MonoBehaviour
 		if(inseki)
 		{
 			timer++;
-			if(timer >= insekiTime)
+			var v = rb.velocity;
+
+			if(timer == 5)
 			{
-				Instantiate(insekiObj, new Vector3(transform.position.x, transform.position.y + 6.0f, transform.position.z), Quaternion.identity);
-				timer = 0;
-				nowNum++;
-				if(nowNum >= maxNum)
+				v.y += jumpPower;
+			}
+			rb.velocity = v;
+
+			if(timer >= afterJumpTime)
+			{
+				if (timer >= afterJumpTime + insekiTime)
 				{
-					inseki = false;
-					timer = 0;
-					nowNum = 0;
+					Instantiate(insekiObj, new Vector3(transform.position.x, transform.position.y + 6.0f, transform.position.z), Quaternion.identity);
+					timer = afterJumpTime;
+					nowNum++;
+					if (nowNum >= maxNum)
+					{
+						inseki = false;
+						timer = 0;
+						nowNum = 0;
+					}
 				}
 			}
 		}

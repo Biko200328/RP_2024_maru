@@ -17,7 +17,7 @@ public class Inseki : MonoBehaviour
 	{
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
 		transform.eulerAngles = new Vector3(-90, 0, 0);
-		time = Random.Range(0, 1.0f);
+		time = Random.Range(-1.0f, 1.0f);
 	}
 
 	// Update is called once per frame
