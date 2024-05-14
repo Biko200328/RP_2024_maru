@@ -256,14 +256,14 @@ MonoBehaviour:
   playerMoveSqr: {fileID: 2059284528}
   isMultiBullet: 0
   bulletsTime:
-  - 5
-  - 60
-  - 120
+  - 80
+  - 140
+  - 200
   bullets:
   - {fileID: 8325586717151904230, guid: 0bf75197d27cada4ab75cc3b7add2e45, type: 3}
   - {fileID: 8325586717151904230, guid: 0bf75197d27cada4ab75cc3b7add2e45, type: 3}
   - {fileID: 654164117055151433, guid: 9f7d81e052e72a1489c6bf5d199447ee, type: 3}
-  laserbullet: {fileID: 8325586717151904230, guid: 0bf75197d27cada4ab75cc3b7add2e45, type: 3}
+  particle: {fileID: 1893075608575292471, guid: 4529a3580f36a8849b51adabe4bbcf95, type: 3}
   inseki: 0
   insekiTime: 30
   maxNum: 10

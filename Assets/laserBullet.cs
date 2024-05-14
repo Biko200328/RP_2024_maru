@@ -24,7 +24,7 @@ public class laserBullet : MonoBehaviour
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
 		enemySqr = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyAttack>();
 		transform.eulerAngles = new Vector3(-90, 0, 0);
-		time -= enemySqr.time;
+		time += enemySqr.time;
 	}
 
 	// Update is called once per frame

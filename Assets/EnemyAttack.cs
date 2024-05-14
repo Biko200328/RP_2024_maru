@@ -19,8 +19,7 @@ public class EnemyAttack : MonoBehaviour
 	float timer = 0;
 	[SerializeField] float[] bulletsTime;
 	[SerializeField] GameObject[] bullets;
-
-	[SerializeField] GameObject laserbullet;
+	[SerializeField] GameObject particle;
 
 
 	[SerializeField] bool inseki;
@@ -61,6 +60,12 @@ public class EnemyAttack : MonoBehaviour
 		if (isMultiBullet)
 		{
 			timer++;
+
+			if(timer == 5)
+			{
+				GameObject particleObj = Instantiate(particle, transform.position, Quaternion.identity);
+				particleObj.transform.parent = this.gameObject.transform;
+			}
 
 			for(int i = 0;i < 3;i++)
 			{
