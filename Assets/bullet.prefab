@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5552056842663228749}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6348a20cbd68094ca3f33bd87b4c5bc, type: 2}
+  - {fileID: 2100000, guid: 15ddf5ff44fd29049b8aea681001f43c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,6 +115,12 @@ MonoBehaviour:
   playerMoveSqr: {fileID: 0}
   deadTime: 3
   particle: {fileID: 4920915988264272432, guid: 7db4790c8cbef324aaad49df014f9dcc, type: 3}
+  particleRed: {fileID: 4920915988264272432, guid: d9cfb8488fd3a3d47aaae61d737483fd, type: 3}
+  isRed: 0
+  materialArray:
+  - {fileID: 2100000, guid: 15ddf5ff44fd29049b8aea681001f43c, type: 2}
+  - {fileID: 2100000, guid: 6a2ae166bd0100b468906ec3541a2fec, type: 2}
+  tex: {fileID: 2800000, guid: 6fa074ae92e83674394139dfe18d79f3, type: 3}
 --- !u!54 &5552056842663228749
 Rigidbody:
   m_ObjectHideFlags: 0

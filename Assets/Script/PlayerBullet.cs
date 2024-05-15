@@ -19,9 +19,14 @@ public class PlayerBullet : MonoBehaviour
 	float deadTimer;
 
 	public GameObject particle;
+	public GameObject particleRed;
 
 	bool isNoHit;
 	float hitTimer;
+
+	public bool isRed;
+	[SerializeField] Material[] materialArray = new Material[1];
+	public Texture tex;
 
 
 	// Start is called before the first frame update
@@ -41,7 +46,15 @@ public class PlayerBullet : MonoBehaviour
 
 		transform.position = new Vector3(_x, transform.position.y, _z);
 
-		Instantiate(particle, transform.position, Quaternion.identity);
+		if(isRed)
+		{
+			Instantiate(particleRed, transform.position, Quaternion.identity);
+		}
+		else
+		{
+			Instantiate(particle, transform.position, Quaternion.identity);
+		}
+		
 
 		if(deadTimer >= deadTime)
 		{
@@ -62,6 +75,12 @@ public class PlayerBullet : MonoBehaviour
 		}
 
 		//transform.localScale += new Vector3(0.001f, 0.001f, 0.001f);
+	}
+
+	public void ChangeMaterial()
+	{
+		GetComponent<MeshRenderer>().material = materialArray[1];
+		isRed = true;
 	}
 
 	private void OnTriggerEnter(Collider other)
