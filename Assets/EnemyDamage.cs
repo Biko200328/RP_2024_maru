@@ -23,6 +23,7 @@ public class EnemyDamage : MonoBehaviour
 
 	[Header("Žó‚¯“n‚µ")]
 	public PlayerMove playerMoveSqr;
+	public SceneController sceneController;
 
 	// Start is called before the first frame update
 	void Update()
@@ -64,6 +65,7 @@ public class EnemyDamage : MonoBehaviour
 		if(nowHp <= 0)
 		{
 			nowHp = 0;
+			sceneController.sceneChange("GameClearScene");
 		}
 	}
 }

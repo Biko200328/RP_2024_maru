@@ -40,9 +40,14 @@ public class EnemyAttack : MonoBehaviour
 	[SerializeField] float tackleTime;
 	[SerializeField] float breakTime;
 	[SerializeField] float tackleSpeed;
+	[SerializeField] GameObject tackleParticle;
 
 	PlayerMove playerMoveSqr;
 	Rigidbody rb;
+
+	public bool isHitFloor;
+	public float jumpTime;
+	float jumpTimer;
 
 
 	// Start is called before the first frame update
@@ -83,6 +88,22 @@ public class EnemyAttack : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if(tackle == false && timer >= afterJumpTime)
+		{
+			if(isHitFloor)
+			{
+				jumpTimer++;
+				if (jumpTimer >= jumpTime)
+				{
+					var v = rb.velocity;
+					v.y += 10;
+					rb.velocity = v;
+
+					jumpTimer = 0;
+					isHitFloor = false;
+				}
+			}
+		}
 		if(isAttack == false && isMultiBullet == false && inseki == false && tackle == false)
 		{
 			attackTimer++;
@@ -107,6 +128,7 @@ public class EnemyAttack : MonoBehaviour
 			{
 				GameObject particleObj = Instantiate(particle, transform.position, Quaternion.identity);
 				particleObj.transform.parent = this.gameObject.transform;
+				particleObj.transform.eulerAngles = new Vector3(90, 0, 0);
 			}
 
 			for(int i = 0;i < 3;i++)
@@ -141,7 +163,7 @@ public class EnemyAttack : MonoBehaviour
 			timer++;
 			var v = rb.velocity;
 
-			if(timer == 5)
+			if (timer == 5)
 			{
 				v.y += jumpPower;
 			}
@@ -169,7 +191,15 @@ public class EnemyAttack : MonoBehaviour
 		if(tackle)
 		{
 			timer++;
-			if(timer == stopTime - 35)
+
+			if(timer == 5)
+			{
+				GameObject particleObj = Instantiate(tackleParticle, transform.position, Quaternion.identity);
+				particleObj.transform.parent = this.gameObject.transform;
+				particleObj.transform.eulerAngles = new Vector3(90, 0, 0);
+			}
+			
+			if (timer == stopTime - 35)
 			{
 				var v = rb.velocity;
 

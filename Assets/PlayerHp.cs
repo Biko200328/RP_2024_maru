@@ -14,6 +14,8 @@ public class PlayerHp : MonoBehaviour
 
 	public playerPic picSqr;
 
+	public SceneController sceneController;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -34,6 +36,7 @@ public class PlayerHp : MonoBehaviour
 		if(nowHp <= 0)
 		{
 			nowHp = 0;
+			sceneController.sceneChange("GameOverScene");
 		}
 	}
 
@@ -45,6 +48,7 @@ public class PlayerHp : MonoBehaviour
 		if (nowHp <= 0)
 		{
 			nowHp = 0;
+			sceneController.sceneChange("GameOverScene");
 		}
 	}
 
@@ -56,6 +60,7 @@ public class PlayerHp : MonoBehaviour
 		if (nowHp <= 0)
 		{
 			nowHp = 0;
+			sceneController.sceneChange("GameOverScene");
 		}
 	}
 
@@ -67,6 +72,7 @@ public class PlayerHp : MonoBehaviour
 		if (nowHp <= 0)
 		{
 			nowHp = 0;
+			sceneController.sceneChange("GameOverScene");
 		}
 	}
 
