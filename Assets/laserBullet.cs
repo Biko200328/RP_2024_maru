@@ -50,6 +50,10 @@ public class laserBullet : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		
+		if (other.gameObject.tag == "Player")
+		{
+			PlayerHp playerHp = other.GetComponent<PlayerHp>();
+			playerHp.BulletDamage();
+		}
 	}
 }

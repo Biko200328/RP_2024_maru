@@ -112,6 +112,7 @@ MonoBehaviour:
   speed: 0
   time: 0
   playerMoveSqr: {fileID: 0}
+  DestroyTime: 50
 --- !u!54 &3290514002724570572
 Rigidbody:
   m_ObjectHideFlags: 0

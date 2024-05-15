@@ -115,11 +115,11 @@ public class EnemyAttack : MonoBehaviour
 				{
 					if(i == 0)
 					{
-						Instantiate(bullets[i],new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+						Instantiate(bullets[i],new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity);
 					}
 					else if (i == 1)
 					{
-						Instantiate(bullets[i], new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+						Instantiate(bullets[i], new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
 					}
 					else
 					{
@@ -187,6 +187,24 @@ public class EnemyAttack : MonoBehaviour
 				isAttack = false;
 				attackTimer = 0;
 			}
+		}
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag == "Player")
+		{
+			PlayerHp playerHp = collision.gameObject.GetComponent<PlayerHp>();
+			playerHp.tuckleDamage();
+		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "Player")
+		{
+			PlayerHp playerHp = other.GetComponent<PlayerHp>();
+			playerHp.tuckleDamage();
 		}
 	}
 }
