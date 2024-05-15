@@ -9,14 +9,15 @@ TagManager:
   - Enemy
   - Fade
   - PlayerBullet
+  - enemyArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - playerbullet
   - Water
   - UI
-  - 
+  - enemyArea
   - 
   - 
   - 

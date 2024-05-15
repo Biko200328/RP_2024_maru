@@ -389,9 +389,9 @@ GameObject:
   - component: {fileID: 292390423}
   - component: {fileID: 292390422}
   - component: {fileID: 292390425}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: enemyArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
