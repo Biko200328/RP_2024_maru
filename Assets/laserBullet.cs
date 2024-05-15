@@ -18,6 +18,8 @@ public class laserBullet : MonoBehaviour
 	public float deadTime;
 	float deadTimer;
 
+	public GameObject particle;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -34,6 +36,8 @@ public class laserBullet : MonoBehaviour
 		_z = playerMoveSqr.radius * Mathf.Cos(-time);
 
 		transform.position = new Vector3(_x, transform.position.y, _z);
+
+		Instantiate(particle, new Vector3(playerMoveSqr.radius * Mathf.Sin(-time - speed * 2), transform.position.y, playerMoveSqr.radius * Mathf.Cos(-time - speed * 2)), Quaternion.identity);
 
 		if (deadTimer >= deadTime)
 		{

@@ -131,3 +131,4 @@ MonoBehaviour:
   playerMoveSqr: {fileID: 0}
   enemySqr: {fileID: 0}
   deadTime: 3
+  particle: {fileID: 4920915988264272432, guid: d9cfb8488fd3a3d47aaae61d737483fd, type: 3}

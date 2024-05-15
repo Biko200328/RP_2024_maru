@@ -256,7 +256,7 @@ MonoBehaviour:
   time: 0
   attackTime: 180
   attackTimer: 0
-  isMultiBullet: 0
+  isMultiBullet: 1
   bulletsTime:
   - 80
   - 140

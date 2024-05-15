@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8325586717151904230}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 3.3334644, y: 1.97, z: 7.45}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -114,6 +114,7 @@ MonoBehaviour:
   radius: 0.5
   playerMoveSqr: {fileID: 0}
   deadTime: 3
+  particle: {fileID: 4920915988264272432, guid: 7db4790c8cbef324aaad49df014f9dcc, type: 3}
 --- !u!54 &5552056842663228749
 Rigidbody:
   m_ObjectHideFlags: 0
