@@ -10,6 +10,9 @@ public class PlayerHp : MonoBehaviour
 	public float bulletDamageNum;
 	public float insekiDamageNum;
 	public float tuckleDamageNum;
+	public float selfDamageNum;
+
+	public playerPic picSqr;
 
 	// Start is called before the first frame update
 	void Start()
@@ -26,6 +29,8 @@ public class PlayerHp : MonoBehaviour
 	public void BulletDamage()
 	{
 		nowHp -= bulletDamageNum;
+		picSqr.isDamage = true;
+		picSqr.damageTimer = 0;
 		if(nowHp <= 0)
 		{
 			nowHp = 0;
@@ -35,6 +40,8 @@ public class PlayerHp : MonoBehaviour
 	public void InsekiDamage()
 	{
 		nowHp -= insekiDamageNum;
+		picSqr.isDamage = true;
+		picSqr.damageTimer = 0;
 		if (nowHp <= 0)
 		{
 			nowHp = 0;
@@ -44,6 +51,19 @@ public class PlayerHp : MonoBehaviour
 	public void tuckleDamage()
 	{
 		nowHp -= tuckleDamageNum;
+		picSqr.isDamage = true;
+		picSqr.damageTimer = 0;
+		if (nowHp <= 0)
+		{
+			nowHp = 0;
+		}
+	}
+
+	public void SelfDamage()
+	{
+		nowHp -= selfDamageNum;
+		picSqr.isDamage = true;
+		picSqr.damageTimer = 0;
 		if (nowHp <= 0)
 		{
 			nowHp = 0;

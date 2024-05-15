@@ -20,12 +20,17 @@ public class PlayerBullet : MonoBehaviour
 
 	public GameObject particle;
 
+	bool isNoHit;
+	float hitTimer;
+
+
 	// Start is called before the first frame update
 	void Start()
     {
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
 		transform.eulerAngles = new Vector3(-90, 0, 0);
 		time -= playerMoveSqr.rotate;
+		isNoHit = true;
 	}
 
     // Update is called once per frame
@@ -50,6 +55,12 @@ public class PlayerBullet : MonoBehaviour
 
 		deadTimer += Time.deltaTime;
 
+		hitTimer++;
+		if(hitTimer >= 40)
+		{
+			isNoHit = false;
+		}
+
 		//transform.localScale += new Vector3(0.001f, 0.001f, 0.001f);
 	}
 
@@ -65,6 +76,16 @@ public class PlayerBullet : MonoBehaviour
 			EnemyDamage enemyDamage = other.gameObject.GetComponent<EnemyDamage>();
 			enemyDamage.Damage();
 			Destroy(this.gameObject);
+		}
+
+		if (other.gameObject.tag == "Player")
+		{
+			if(isNoHit == false)
+			{
+				PlayerHp hp = other.gameObject.GetComponent<PlayerHp>();
+				hp.SelfDamage();
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }

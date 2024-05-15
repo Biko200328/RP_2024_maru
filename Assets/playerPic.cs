@@ -11,6 +11,12 @@ public class playerPic : MonoBehaviour
 	[SerializeField] Texture texLeft;
 	[SerializeField] Texture texRight;
 
+	public bool isDamage;
+	public float damageTimer;
+	[SerializeField] float DamageTime;
+	[SerializeField] Texture texLeftDamage;
+	[SerializeField] Texture texRightDamage;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -22,11 +28,35 @@ public class playerPic : MonoBehaviour
 	{
 		if(moveSqr.lookLeft)
 		{
-			material.SetTexture("_MainTex", texLeft);
+			if(isDamage)
+			{
+				material.SetTexture("_MainTex", texLeftDamage);
+			}
+			else
+			{
+				material.SetTexture("_MainTex", texLeft);
+			}
 		}
 		else
 		{
-			material.SetTexture("_MainTex", texRight);
+			if (isDamage)
+			{
+				material.SetTexture("_MainTex", texRightDamage);
+			}
+			else
+			{
+				material.SetTexture("_MainTex", texRight);
+			}
+		}
+
+		if(isDamage)
+		{
+			damageTimer++;
+			if(damageTimer >= DamageTime)
+			{
+				isDamage = false;
+				damageTimer = 0;
+			}
 		}
 	}
 }
