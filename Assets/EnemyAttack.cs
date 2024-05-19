@@ -84,6 +84,13 @@ public class EnemyAttack : MonoBehaviour
 
 			isAttack = false;
 		}
+
+		if(tackle == false)
+		{
+			
+		}
+
+		transform.LookAt(playerMoveSqr.transform);
 	}
 
 	private void FixedUpdate()

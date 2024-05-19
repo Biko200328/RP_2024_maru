@@ -42,6 +42,9 @@ public class EnemyDamage : MonoBehaviour
 				speed = 0;
 			}
 		}
+
+		
+
 	}
 
 	private void FixedUpdate()

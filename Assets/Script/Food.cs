@@ -7,7 +7,7 @@ public class Food : MonoBehaviour
 	public PlayerMove playerMoveSqr;
 
 	float addRotSpeedCon;
-	float addRotSpeed = 0.02f;
+	//float addRotSpeed = 0.02f;
 	public float rotate = 0.5f;
 	public float radius = 20.5f;
 

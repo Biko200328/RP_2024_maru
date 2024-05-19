@@ -6,6 +6,8 @@ public class BossArea : MonoBehaviour
 {
 	public Texture tex;
 
+	public GameObject boss;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -15,7 +17,7 @@ public class BossArea : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
+		transform.position = boss.transform.position;
 	}
 
 	private void OnTriggerEnter(Collider other)
