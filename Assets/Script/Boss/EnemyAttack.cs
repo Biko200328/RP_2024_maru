@@ -45,6 +45,7 @@ public class EnemyAttack : MonoBehaviour
 
 	PlayerMove playerMoveSqr;
 	Rigidbody rb;
+	[SerializeField] CameraShake cameraShake;
 
 	public bool isHitFloor;
 	public float jumpTime;
@@ -124,6 +125,8 @@ public class EnemyAttack : MonoBehaviour
 		}
 
 
+
+
 		if (tackle == false)
 		{
 			time += speed;
@@ -178,6 +181,11 @@ public class EnemyAttack : MonoBehaviour
 				v.y += jumpPower;
 			}
 			rb.velocity = v;
+
+			if(timer == 86)
+			{
+				cameraShake.Shake(0.25f, 0.25f);
+			}
 
 			if(timer >= afterJumpTime)
 			{

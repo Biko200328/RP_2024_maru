@@ -30,6 +30,8 @@ public class PlayerMove : MonoBehaviour
 
 	Rigidbody rb;
 
+	public bool isDontMove;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -51,32 +53,36 @@ public class PlayerMove : MonoBehaviour
 		//	//_nextRotate = rotate - addRotSpeed;
 		//}
 
-		var inputH = Input.GetAxis("cHorizontalL");
-		addRotSpeedCon = inputH * addRotSpeed;
-
-		if (addRotSpeedCon > 0)
+		if(isDontMove == false)
 		{
-			lookLeft = true;
-			if (isHitLeft == false)
-			{
-				rotate -= addRotSpeedCon;
-			}
-		}
-		if (addRotSpeedCon < 0)
-		{
-			lookLeft = false;
-			if (isHitRight == false)
-			{
-				rotate -= addRotSpeedCon;
-			}
-		}
+			var inputH = Input.GetAxis("cHorizontalL");
+			addRotSpeedCon = inputH * addRotSpeed;
 
-		//Œ»Ý
-		_x = radius * Mathf.Sin(rotate);
-		_z = radius * Mathf.Cos(rotate);
+			if (addRotSpeedCon > 0)
+			{
+				lookLeft = true;
+				if (isHitLeft == false)
+				{
+					rotate -= addRotSpeedCon;
+				}
+			}
+			if (addRotSpeedCon < 0)
+			{
+				lookLeft = false;
+				if (isHitRight == false)
+				{
+					rotate -= addRotSpeedCon;
+				}
+			}
 
-		//À•WˆÚ“®
-		transform.position = new Vector3(_x, transform.position.y, _z);
+			//Œ»Ý
+			_x = radius * Mathf.Sin(rotate);
+			_z = radius * Mathf.Cos(rotate);
+
+			//À•WˆÚ“®
+			transform.position = new Vector3(_x, transform.position.y, _z);
+		}
+		
 
 		var v = rb.velocity;
 

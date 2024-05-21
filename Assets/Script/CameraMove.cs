@@ -15,6 +15,8 @@ public class CameraMove : MonoBehaviour
 	public GameObject playerObj;
 	public PlayerMove playerMoveSqr;
 
+	public bool isDontMove;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -24,30 +26,33 @@ public class CameraMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		var inputH = Input.GetAxis("cHorizontalL");
-		addRotSpeedCon = inputH * addRotSpeed;
-
-		if (addRotSpeedCon > 0)
+		if(isDontMove == false)
 		{
-			if (playerMoveSqr.isHitLeft == false)
-			{
-				rotate -= addRotSpeedCon;
-			}
-		}
-		if (addRotSpeedCon < 0)
-		{
-			if (playerMoveSqr.isHitRight == false)
-			{
-				rotate -= addRotSpeedCon;
-			}
-		}
+			var inputH = Input.GetAxis("cHorizontalL");
+			addRotSpeedCon = inputH * addRotSpeed;
 
-		//Œ»Ý
-		_x = radius * Mathf.Sin(rotate);
-		_z = radius * Mathf.Cos(rotate);
+			if (addRotSpeedCon > 0)
+			{
+				if (playerMoveSqr.isHitLeft == false)
+				{
+					rotate -= addRotSpeedCon;
+				}
+			}
+			if (addRotSpeedCon < 0)
+			{
+				if (playerMoveSqr.isHitRight == false)
+				{
+					rotate -= addRotSpeedCon;
+				}
+			}
 
-		//À•WˆÚ“®
-		transform.position = new Vector3(_x, transform.position.y, _z);
-		transform.LookAt(playerObj.gameObject.transform);
+			//Œ»Ý
+			_x = radius * Mathf.Sin(rotate);
+			_z = radius * Mathf.Cos(rotate);
+
+			//À•WˆÚ“®
+			transform.position = new Vector3(_x, transform.position.y, _z);
+			transform.LookAt(playerObj.gameObject.transform);
+		}
 	}
 }

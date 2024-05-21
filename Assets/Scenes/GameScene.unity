@@ -342,19 +342,20 @@ MonoBehaviour:
   - {fileID: 8325586717151904230, guid: 0bf75197d27cada4ab75cc3b7add2e45, type: 3}
   - {fileID: 654164117055151433, guid: 9f7d81e052e72a1489c6bf5d199447ee, type: 3}
   particle: {fileID: 1893075608575292471, guid: 4529a3580f36a8849b51adabe4bbcf95, type: 3}
-  inseki: 0
+  inseki: 1
   insekiTime: 30
   jumpPower: 12.5
   afterJumpTime: 120
   maxNum: 10
   insekiObj: {fileID: 3290514002724570566, guid: ff7369ee8b3f9c64e9a8a8b0c2767cff, type: 3}
-  tackle: 1
+  tackle: 0
   stopTime: 60
   tackleTime: 62
   breakTime: 80
   tackleSpeed: 0.1
   tackleParticle: {fileID: 1893075608575292471, guid: 405266faab8cebd4ab8a32a7fa4c8aa6, type: 3}
   tackleWarningObj: {fileID: 1418232664}
+  cameraShake: {fileID: 963194231}
   isHitFloor: 0
   jumpTime: 50
 --- !u!54 &28073697
@@ -2951,6 +2952,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194231}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   m_Layer: 0
@@ -3044,6 +3046,7 @@ MonoBehaviour:
   radius: 20.5
   playerObj: {fileID: 1663544656}
   playerMoveSqr: {fileID: 2059284528}
+  isDontMove: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3058,6 +3061,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 3012757726112726408, guid: dfdf7201465dd6948a012db02be3660c, type: 3}
   fadeCanvas: {fileID: 0}
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6acb686554cec945bc933f4280bc209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMove: {fileID: 2059284528}
+  cameraMove: {fileID: 963194229}
 --- !u!1001 &968752266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6429,11 +6446,12 @@ MonoBehaviour:
   radius: 12
   isFloor: 0
   isDoubleJump: 0
-  jumpPower: 6
+  jumpPower: 7
   lookObj: {fileID: 1663544656}
   isHitLeft: 0
   isHitRight: 0
   lookLeft: 0
+  isDontMove: 0
 --- !u!54 &2059284529
 Rigidbody:
   m_ObjectHideFlags: 0
