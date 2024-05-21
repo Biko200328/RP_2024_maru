@@ -15,12 +15,16 @@ public class Inseki : MonoBehaviour
 	[SerializeField] float DestroyTime;
 	float timer;
 
+	public Vector3 rotate;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
 		transform.eulerAngles = new Vector3(-90, 0, 0);
 		time = Random.Range(playerMoveSqr.rotate - 0.5f, playerMoveSqr.rotate + 0.5f);
+
+		rotate = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), Random.Range(-5, 5));
 	}
 
 	// Update is called once per frame
@@ -30,8 +34,9 @@ public class Inseki : MonoBehaviour
 		_z = playerMoveSqr.radius * Mathf.Cos(time);
 
 		transform.position = new Vector3(_x, transform.position.y, _z);
+		transform.localEulerAngles += rotate;
 
-		if(timer >= DestroyTime)
+		if (timer >= DestroyTime)
 		{
 			Destroy(this.gameObject);
 		}

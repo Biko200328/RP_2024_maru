@@ -332,6 +332,9 @@ MonoBehaviour:
   time: 0
   attackTime: 180
   attackTimer: 0
+  isKnock: 0
+  maxKnockSpeed: 0.08
+  knockTime: 3
   isMultiBullet: 0
   bulletsTime:
   - 80
@@ -347,7 +350,7 @@ MonoBehaviour:
   jumpPower: 12.5
   afterJumpTime: 120
   maxNum: 10
-  insekiObj: {fileID: 3290514002724570566, guid: ff7369ee8b3f9c64e9a8a8b0c2767cff, type: 3}
+  insekiObj: {fileID: 2914898825542004239, guid: 45eb94e6c740d324cb0eac2dec51a965, type: 3}
   tackle: 0
   stopTime: 60
   tackleTime: 62
@@ -979,7 +982,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287269091}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.6263819, y: 0.359914, z: 2.622444}

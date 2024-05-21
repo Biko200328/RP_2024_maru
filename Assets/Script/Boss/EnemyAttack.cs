@@ -15,6 +15,12 @@ public class EnemyAttack : MonoBehaviour
 	[SerializeField] float attackTimer;
 	bool isAttack;
 
+	public bool isKnock;
+	float knockSpeed;
+	[SerializeField] float maxKnockSpeed;
+	[SerializeField] float knockTime;
+	float knockTimer;
+
 
 	//’e
 	[Header("’e")]
@@ -89,11 +95,6 @@ public class EnemyAttack : MonoBehaviour
 			isAttack = false;
 		}
 
-		if(tackle == false)
-		{
-			
-		}
-
 		transform.LookAt(playerMoveSqr.transform);
 	}
 
@@ -126,8 +127,19 @@ public class EnemyAttack : MonoBehaviour
 
 
 
+		if(isKnock)
+		{
+			time += knockSpeed;
+			knockTimer++;
+			knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed);
+			if(knockTimer >= knockTime)
+			{
+				isKnock = false;
+				knockTimer = 0;
+			}
+		}
 
-		if (tackle == false)
+		if (tackle == false && isKnock == false)
 		{
 			time += speed;
 		}
@@ -191,7 +203,7 @@ public class EnemyAttack : MonoBehaviour
 			{
 				if (timer >= afterJumpTime + insekiTime)
 				{
-					Instantiate(insekiObj, new Vector3(transform.position.x, transform.position.y + 6.0f, transform.position.z), Quaternion.identity);
+					Instantiate(insekiObj, new Vector3(transform.position.x, transform.position.y + 8.0f, transform.position.z), Quaternion.identity);
 					timer = afterJumpTime;
 					nowNum++;
 					if (nowNum >= maxNum)
