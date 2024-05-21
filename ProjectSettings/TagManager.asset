@@ -10,6 +10,7 @@ TagManager:
   - Fade
   - PlayerBullet
   - enemyArea
+  - Center
   layers:
   - Default
   - TransparentFX

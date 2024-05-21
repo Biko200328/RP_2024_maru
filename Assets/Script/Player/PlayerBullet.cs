@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
 	public float speed;
-	[SerializeField] float time;
+	public float time;
 
 	public float radius = 0.5f; //‰~‚Ì‘å‚«‚³
 
@@ -28,14 +28,19 @@ public class PlayerBullet : MonoBehaviour
 	[SerializeField] Material[] materialArray = new Material[1];
 	public Texture tex;
 
+	public bool isMb;
 
 	// Start is called before the first frame update
 	void Start()
     {
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
-		transform.eulerAngles = new Vector3(-90, 0, 0);
-		time -= playerMoveSqr.rotate;
-		isNoHit = true;
+
+		if (isMb == false)
+		{
+			transform.eulerAngles = new Vector3(-90, 0, 0);
+			time -= playerMoveSqr.rotate;
+			isNoHit = true;
+		}
 	}
 
     // Update is called once per frame
@@ -46,19 +51,22 @@ public class PlayerBullet : MonoBehaviour
 
 		transform.position = new Vector3(_x, transform.position.y, _z);
 
-		if(isRed)
+		if (isMb == false)
 		{
-			Instantiate(particleRed, transform.position, Quaternion.identity);
-		}
-		else
-		{
-			Instantiate(particle, transform.position, Quaternion.identity);
-		}
-		
+			if (isRed)
+			{
+				Instantiate(particleRed, transform.position, Quaternion.identity);
+			}
+			else
+			{
+				Instantiate(particle, transform.position, Quaternion.identity);
+			}
 
-		if(deadTimer >= deadTime)
-		{
-			Destroy(this.gameObject);
+
+			if (deadTimer >= deadTime)
+			{
+				Destroy(this.gameObject);
+			}
 		}
 	}
 
