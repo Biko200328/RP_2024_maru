@@ -18,8 +18,8 @@ public class CameraShake : MonoBehaviour
 
 		var elapsed = 0f;
 
-		playerMove.isDontMove = true;
-		cameraMove.isDontMove = true;
+		playerMove.isDontMoveCamera = true;
+		cameraMove.isDontMoveCamera = true;
 
 		while (elapsed < duration)
 		{
@@ -35,8 +35,8 @@ public class CameraShake : MonoBehaviour
 
 		if(elapsed > duration)
 		{
-			playerMove.isDontMove = false;
-			cameraMove.isDontMove = false;
+			playerMove.isDontMoveCamera = false;
+			cameraMove.isDontMoveCamera = false;
 		}
 
 		transform.position = pos;

@@ -30,7 +30,9 @@ public class PlayerMove : MonoBehaviour
 
 	Rigidbody rb;
 
-	public bool isDontMove;
+	public bool isDontMoveCamera;
+	public bool isDontMoveShot;
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -53,7 +55,7 @@ public class PlayerMove : MonoBehaviour
 		//	//_nextRotate = rotate - addRotSpeed;
 		//}
 
-		if(isDontMove == false)
+		if (isDontMoveCamera == false && isDontMoveShot == false)
 		{
 			var inputH = Input.GetAxis("cHorizontalL");
 			addRotSpeedCon = inputH * addRotSpeed;

@@ -15,7 +15,8 @@ public class CameraMove : MonoBehaviour
 	public GameObject playerObj;
 	public PlayerMove playerMoveSqr;
 
-	public bool isDontMove;
+	public bool isDontMoveCamera;
+	public bool isDontMoveShot;
 
 	// Start is called before the first frame update
 	void Start()
@@ -26,7 +27,7 @@ public class CameraMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(isDontMove == false)
+		if (isDontMoveCamera == false && isDontMoveShot == false)
 		{
 			var inputH = Input.GetAxis("cHorizontalL");
 			addRotSpeedCon = inputH * addRotSpeed;

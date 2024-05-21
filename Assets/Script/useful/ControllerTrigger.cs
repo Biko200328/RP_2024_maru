@@ -263,4 +263,46 @@ public class ControllerTrigger : MonoBehaviour
 
 		return false;
 	}
+
+	public bool GetLTDown()
+	{
+		isPrevLT = isLT;
+
+		if (tri2 <= -0.8f)
+		{
+			isLT = true;
+		}
+		else
+		{
+			isLT = false;
+		}
+
+		if (isLT == true && isPrevLT == false)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public bool GetLTUp()
+	{
+		isPrevLT = isLT;
+
+		if (tri2 <= -0.8f)
+		{
+			isLT = true;
+		}
+		else
+		{
+			isLT = false;
+		}
+
+		if (isPrevLT == true && isLT == false)
+		{
+			return true;
+		}
+
+		return false;
+	}
 }

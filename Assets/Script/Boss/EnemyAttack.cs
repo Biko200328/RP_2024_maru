@@ -132,13 +132,15 @@ public class EnemyAttack : MonoBehaviour
 			if(isLeft)
 			{
 				time += knockSpeed;
+				knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed);
 			}
 			else
 			{
 				time -= knockSpeed;
+				knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed * 2);
 			}
 			knockTimer++;
-			knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed);
+
 			if(knockTimer >= knockTime)
 			{
 				isKnock = false;

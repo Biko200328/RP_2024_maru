@@ -3050,7 +3050,8 @@ MonoBehaviour:
   radius: 20.5
   playerObj: {fileID: 1663544656}
   playerMoveSqr: {fileID: 2059284528}
-  isDontMove: 0
+  isDontMoveCamera: 0
+  isDontMoveShot: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6455,7 +6456,8 @@ MonoBehaviour:
   isHitLeft: 0
   isHitRight: 0
   lookLeft: 0
-  isDontMove: 0
+  isDontMoveCamera: 0
+  isDontMoveShot: 0
 --- !u!54 &2059284529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6567,8 +6569,10 @@ MonoBehaviour:
   bulletObj: {fileID: 8325586717151904230, guid: 21f343688c60b9a4da3baa143b875b5e, type: 3}
   bulletSpeed: 0.05
   timer: 0
-  createTime: 2
+  createTime: 100
   bigBullet: {fileID: 9210085409511562333, guid: 8f20c54e1b8b17f4d9860081fe31ca9c, type: 3}
+  particle: {fileID: 1893075608575292471, guid: b917921e27a51294a95aef7508d660f7, type: 3}
+  cameraMove: {fileID: 963194229}
 --- !u!114 &2059284535
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,11 @@ public class PlayerShot : MonoBehaviour
 	[SerializeField]float timer;
 	[SerializeField] float createTime;
 	[SerializeField] GameObject bigBullet;
+	[SerializeField] GameObject particle;
+
+	public CameraMove cameraMove;
+
+	GameObject keepParticle;
 
 	// Start is called before the first frame update
 	void Start()
@@ -41,7 +46,14 @@ public class PlayerShot : MonoBehaviour
 
 		if(controllerTriggerSqr.GetLT())
 		{
-			timer += Time.deltaTime;
+			timer++;
+			playerMove.isDontMoveShot = true;
+			cameraMove.isDontMoveShot = true;
+
+			if (timer == 1)
+			{
+				keepParticle = Instantiate(particle, transform.position, Quaternion.identity);
+			}
 			if (timer >= createTime)
 			{
 				Instantiate(bigBullet, transform.position, Quaternion.identity);
@@ -52,6 +64,12 @@ public class PlayerShot : MonoBehaviour
 		else
 		{
 			timer = 0;
+			playerMove.isDontMoveShot = false;
+			cameraMove.isDontMoveShot = false;
+			if(keepParticle != null)
+			{
+				Destroy(keepParticle);
+			}
 		}
 	}
 }
