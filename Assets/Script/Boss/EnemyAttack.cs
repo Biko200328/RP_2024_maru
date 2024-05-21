@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour
 	[SerializeField] float maxKnockSpeed;
 	[SerializeField] float knockTime;
 	float knockTimer;
-
+	public bool isLeft;
 
 	//’e
 	[Header("’e")]
@@ -129,7 +129,14 @@ public class EnemyAttack : MonoBehaviour
 
 		if(isKnock)
 		{
-			time += knockSpeed;
+			if(isLeft)
+			{
+				time += knockSpeed;
+			}
+			else
+			{
+				time -= knockSpeed;
+			}
 			knockTimer++;
 			knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed);
 			if(knockTimer >= knockTime)
