@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
@@ -11,6 +12,10 @@ public class PlayerShot : MonoBehaviour
 	PlayerMove playerMove;
 
 	public float bulletSpeed;
+
+	[SerializeField]float timer;
+	[SerializeField] float createTime;
+	[SerializeField] GameObject bigBullet;
 
 	// Start is called before the first frame update
 	void Start()
@@ -32,6 +37,21 @@ public class PlayerShot : MonoBehaviour
 			{
 				pb.speed = -bulletSpeed;
 			}
+		}
+
+		if(controllerTriggerSqr.GetLT())
+		{
+			timer += Time.deltaTime;
+			if (timer >= createTime)
+			{
+				Instantiate(bigBullet, transform.position, Quaternion.identity);
+				timer = 0;
+			}
+
+		}
+		else
+		{
+			timer = 0;
 		}
 	}
 }

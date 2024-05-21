@@ -17,6 +17,10 @@ public class ControllerTrigger : MonoBehaviour
 	bool isRT;
 	bool isPrevRT;
 
+	float tri2;
+	bool isLT;
+	bool isPrevLT;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -63,6 +67,7 @@ public class ControllerTrigger : MonoBehaviour
 
 		//Trigger
 		tri = Input.GetAxis("RT");
+		tri2 = Input.GetAxis("LT");
 		//if (tri > 0)
 		//{
 		//	Debug.Log("L trigger:" + tri);
@@ -233,6 +238,25 @@ public class ControllerTrigger : MonoBehaviour
 		}
 
 		if (isRT == true)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public bool GetLT()
+	{
+		if (tri2 <= -0.8f)
+		{
+			isLT = true;
+		}
+		else
+		{
+			isLT = false;
+		}
+
+		if (isLT == true)
 		{
 			return true;
 		}

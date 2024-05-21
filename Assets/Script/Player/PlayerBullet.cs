@@ -102,16 +102,20 @@ public class PlayerBullet : MonoBehaviour
 		{
 			EnemyDamage enemyDamage = other.gameObject.GetComponent<EnemyDamage>();
 			enemyDamage.Damage();
-			EnemyAttack enemyAttack = other.gameObject.GetComponent<EnemyAttack>();
-			if(speed > 0)
+			if(isMb == false)
 			{
-				enemyAttack.isLeft = true;
+				EnemyAttack enemyAttack = other.gameObject.GetComponent<EnemyAttack>();
+				if (speed > 0)
+				{
+					enemyAttack.isLeft = true;
+				}
+				else
+				{
+					enemyAttack.isLeft = false;
+				}
+				enemyAttack.isKnock = true;
 			}
-			else
-			{
-				enemyAttack.isLeft = false;
-			}
-			enemyAttack.isKnock = true;
+			
 			Destroy(this.gameObject);
 		}
 

@@ -48,7 +48,8 @@ public class BigBullet : MonoBehaviour
 			PlayerBullet mbSqr = gameObject.AddComponent<PlayerBullet>();
 			mbSqr.isMb = true;
 			mbSqr.time = pbSqr.time;
-			mbSqr.speed = pbSqr.speed;
+			mbSqr.speed = pbSqr.speed / 2;
+			Destroy(other.gameObject);
 		}
 	}
 }
