@@ -41,6 +41,7 @@ public class EnemyAttack : MonoBehaviour
 	[SerializeField] float breakTime;
 	[SerializeField] float tackleSpeed;
 	[SerializeField] GameObject tackleParticle;
+	[SerializeField] GameObject tackleWarningObj;
 
 	PlayerMove playerMoveSqr;
 	Rigidbody rb;
@@ -55,6 +56,8 @@ public class EnemyAttack : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
+
+		tackleWarningObj.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -206,13 +209,29 @@ public class EnemyAttack : MonoBehaviour
 				particleObj.transform.eulerAngles = new Vector3(90, 0, 0);
 			}
 			
-			if (timer == stopTime - 35)
-			{
-				var v = rb.velocity;
+			//if (timer == stopTime - 35)
+			//{
+			//	var v = rb.velocity;
 
-				v.y += 5;
-				rb.velocity = v;
+			//	v.y += 5;
+			//	rb.velocity = v;
+			//}
+
+			if(timer <= stopTime)
+			{
+				if(timer % 10 == 0)
+				{
+					if(tackleWarningObj.activeInHierarchy)
+					{
+						tackleWarningObj.SetActive(false);
+					}
+					else
+					{
+						tackleWarningObj.SetActive(true);
+					}
+				}
 			}
+
 			if (timer >= stopTime && timer <= stopTime + tackleTime)
 			{
 				time -= tackleSpeed;
