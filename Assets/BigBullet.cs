@@ -51,5 +51,13 @@ public class BigBullet : MonoBehaviour
 			mbSqr.speed = pbSqr.speed / 2;
 			Destroy(other.gameObject);
 		}
+
+		if(other.gameObject.tag == "Enemy")
+		{
+			EnemyDamage enemyDamage = other.gameObject.GetComponent<EnemyDamage>();
+			enemyDamage.BigDamage();
+
+			Destroy(this.gameObject);
+		}
 	}
 }

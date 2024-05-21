@@ -52,12 +52,20 @@ public class PlayerShot : MonoBehaviour
 
 			if (timer == 1)
 			{
-				keepParticle = Instantiate(particle, transform.position, Quaternion.identity);
+				//keepParticle = Instantiate(particle, transform.position, Quaternion.identity);
 			}
 			if (timer >= createTime)
 			{
 				Instantiate(bigBullet, transform.position, Quaternion.identity);
 				timer = 0;
+			}
+			
+			if(timer <= createTime - 30)
+			{
+				if (timer % 4 == 0)
+				{
+					Instantiate(particle, transform.position, Quaternion.identity);
+				}
 			}
 
 		}
@@ -66,10 +74,10 @@ public class PlayerShot : MonoBehaviour
 			timer = 0;
 			playerMove.isDontMoveShot = false;
 			cameraMove.isDontMoveShot = false;
-			if(keepParticle != null)
-			{
-				Destroy(keepParticle);
-			}
+			//if(keepParticle != null)
+			//{
+			//	Destroy(keepParticle);
+			//}
 		}
 	}
 }

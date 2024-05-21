@@ -133,15 +133,16 @@ public class EnemyAttack : MonoBehaviour
 			{
 				time += knockSpeed;
 				knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed);
+				
 			}
 			else
 			{
 				time -= knockSpeed;
-				knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed * 2);
+				knockSpeed = MyEasing.QuartIn(knockTimer, knockTime, speed, maxKnockSpeed * 4);
 			}
 			knockTimer++;
 
-			if(knockTimer >= knockTime)
+			if (knockTimer >= knockTime)
 			{
 				isKnock = false;
 				knockTimer = 0;

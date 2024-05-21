@@ -313,7 +313,8 @@ MonoBehaviour:
   addSpeed: 0.1
   nowHp: 100
   maxHp: 100
-  damageNum: 0.75
+  damageNum: 0.1
+  bigDamageNum: 20
   playerMoveSqr: {fileID: 2059284528}
   sceneController: {fileID: 963194230}
 --- !u!114 &28073696
@@ -6590,7 +6591,7 @@ MonoBehaviour:
   bulletDamageNum: 10
   insekiDamageNum: 10
   tuckleDamageNum: 10
-  selfDamageNum: 5
+  selfDamageNum: 2
   picSqr: {fileID: 2008510633}
   sceneController: {fileID: 963194230}
 --- !u!1 &2073389560

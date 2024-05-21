@@ -20,6 +20,7 @@ public class EnemyDamage : MonoBehaviour
 	public float nowHp = 100;
 	public float maxHp = 100;
 	public float damageNum;
+	public float bigDamageNum;
 
 	[Header("Žó‚¯“n‚µ")]
 	public PlayerMove playerMoveSqr;
@@ -66,6 +67,18 @@ public class EnemyDamage : MonoBehaviour
 		nowHp -= damageNum;
 
 		if(nowHp <= 0)
+		{
+			nowHp = 0;
+			sceneController.sceneChange("GameClearScene");
+		}
+	}
+
+	public void BigDamage()
+	{
+		isDamage = true;
+		nowHp -= bigDamageNum;
+
+		if (nowHp <= 0)
 		{
 			nowHp = 0;
 			sceneController.sceneChange("GameClearScene");

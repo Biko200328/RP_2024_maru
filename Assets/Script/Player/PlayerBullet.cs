@@ -100,10 +100,10 @@ public class PlayerBullet : MonoBehaviour
 
 		if(other.gameObject.tag == "Enemy")
 		{
-			EnemyDamage enemyDamage = other.gameObject.GetComponent<EnemyDamage>();
-			enemyDamage.Damage();
 			if(isMb == false)
 			{
+				EnemyDamage enemyDamage = other.gameObject.GetComponent<EnemyDamage>();
+				enemyDamage.Damage();
 				EnemyAttack enemyAttack = other.gameObject.GetComponent<EnemyAttack>();
 				if (speed > 0)
 				{
@@ -114,9 +114,9 @@ public class PlayerBullet : MonoBehaviour
 					enemyAttack.isLeft = false;
 				}
 				enemyAttack.isKnock = true;
+
+				Destroy(this.gameObject);
 			}
-			
-			Destroy(this.gameObject);
 		}
 
 		if (other.gameObject.tag == "Player")
