@@ -17,12 +17,19 @@ public class Inseki : MonoBehaviour
 
 	public Vector3 rotate;
 
+	public GameObject warningObj;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		playerMoveSqr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
 		transform.eulerAngles = new Vector3(-90, 0, 0);
 		time = Random.Range(playerMoveSqr.rotate - 0.5f, playerMoveSqr.rotate + 0.5f);
+		_x = playerMoveSqr.radius * Mathf.Sin(time);
+		_z = playerMoveSqr.radius * Mathf.Cos(time);
+		transform.position = new Vector3(_x, transform.position.y, _z);
+
+		Instantiate(warningObj, new Vector3(transform.position.x, 0.12f, transform.position.z), Quaternion.identity);
 
 		rotate = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), Random.Range(-5, 5));
 	}
@@ -30,10 +37,6 @@ public class Inseki : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		_x = playerMoveSqr.radius * Mathf.Sin(time);
-		_z = playerMoveSqr.radius * Mathf.Cos(time);
-
-		transform.position = new Vector3(_x, transform.position.y, _z);
 		transform.localEulerAngles += rotate;
 
 		if (timer >= DestroyTime)
