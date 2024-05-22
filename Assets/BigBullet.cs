@@ -12,6 +12,9 @@ public class BigBullet : MonoBehaviour
 
 	bool isTrack;
 	GameObject bullet;
+
+	public float destroyTime;
+	float timer;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -36,6 +39,18 @@ public class BigBullet : MonoBehaviour
 			rb.velocity = v;
 		}
 		
+	}
+
+	private void FixedUpdate()
+	{
+		if(isTrack == false)
+		{
+			timer++;
+			if (timer >= destroyTime)
+			{
+				Destroy(this.gameObject);
+			}
+		}
 	}
 
 	private void OnTriggerEnter(Collider other)
